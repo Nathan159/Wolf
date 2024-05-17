@@ -1,0 +1,324 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+body
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url("Login.jpg") no-repeat;
+    background-size: cover;
+    background-position: center;
+
+}
+
+header
+{
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+
+}
+
+.logo /* logo */
+{
+    font-size: 2em;
+    color: #fff;
+    user-select: none;
+
+}
+
+.navigation a /* horni panel panel*/
+{
+    position: relative;
+    font-size: 1.1em;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+}
+
+.navigation .btnLogin-popup /* login*/
+{
+    width: 130px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid #000000; /* ohraniceni*/
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #ffffff; /* napis*/
+    font-weight: 500;
+    margin-left: 40px;
+    transition: .5s ;
+} 
+
+.navigation a::after /* podtrzeni navigace*/
+{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background: #ffffff;
+    border-radius: 5px;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform .5s;
+}
+
+.navigation a:hover::after /*navigace odtrzeni*/
+{
+    transform-origin: left;
+    transform: scale(1);
+
+}
+
+.navigation .btnLogin-popup:hover /*login po najeti*/
+{
+    background: #000000;
+    color: #ffffff;
+}
+
+.wrapper /* tabulka login */
+{
+    position: relative;
+    width: 400px;
+    height: 440px;
+    background: transparent;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transform: scale(0);
+    transition: transform .9s ease, height .9s ease; /*rychlost prechodu*/
+}
+
+.wrapper.active-popup
+{
+    transform: scale(1);
+
+}
+
+.wrapper.login-form
+{
+   height: 520px; 
+}
+
+.wrapper.register-form
+{
+   height: 450px; 
+}
+
+.wrapper .form-box 
+{
+    width: 100%;
+    padding: 40px;
+}
+
+.wrapper .active .form-box.login
+{
+    transition: none;
+   
+}
+
+.wrapper .form-box.login 
+{ 
+    transition: transform .9s ease;
+    transform: translateX(0);
+} 
+
+.wrapper.login-form .form-box.login /*prechod login na register */
+{ 
+     transition: transform .9s ease;
+     transform: translateX(-400px);
+} 
+
+
+.wrapper .form-box.register /*prechod z register na login*/
+{
+    position: absolute;
+    transition: transform .9s ease; 
+    transform:translateX(400px) ;
+}
+
+.wrapper.login-form .form-box.register 
+{ 
+    transition: transform .9s ease;
+    transform: translateX(0);
+} 
+
+.wrapper .icon-close /*krizek */
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45px;
+    height: 45px;
+    background: transparent;
+    font-size: 2em;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.wrapper .icon-close:hover /*krizek po tom*/
+{
+    background: rgb(0, 0, 0);
+    border-bottom-left-radius: 20px; /*zaobleni*/
+}
+
+.form-box h2 /*login */
+{
+    font-size: 2em;
+    color: #ffffff;
+    text-align: center;
+}
+
+.input-box  /* podtrzeni pod email pass*/
+{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid #000000;
+    margin: 30px 0;
+}
+
+.input-box label /* napis email a password */
+{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-500);
+    font-size: 1em;
+    color: #000000;
+    font-weight: 500;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label 
+{
+    top: -10px;
+}
+
+.input-box input /* psani hesla a emailu*/
+{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;  
+    font-size: 1em;
+    color: #ffffff;
+    font-weight: 600;
+    padding: 0 35px 0 5px; 
+
+}
+
+.input-box .icon  /* ikony */
+{
+    position: absolute;
+    right: 8px;
+    font-size: 1.2em;
+    color: #c0d5da;
+    line-height: 57px;
+}
+
+.remember-forgot /* remember me napis*/
+{
+    font-size: .9em;
+    color: #ffffff;
+    font-weight: 600;
+    margin: -15px 0 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.remember-forgot label input /* barva remember*/
+{
+    accent-color: #000000; 
+    margin-right: 3px;     
+}
+
+.remember-forgot a /* barva forgot password*/
+{
+    color: #eff2f49c; 
+    text-decoration: none;
+}
+
+.remember-forgot a:hover /* barva forgot password after */
+{
+    color: #fdfdfd; 
+    text-decoration: underline;
+}
+
+.btn  /* barva buton login */
+{
+    width: 100%;
+    height: 45px;
+    color: rgb(255, 255, 255);
+    background: hsl(0, 0%, 0%);
+    /*border: none; */      /*ohraniceni */
+    outline: none; 
+    border-radius: 500px; /*zaobleni*/
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.btn:hover /* barva buton login  po najeti*/
+{
+    text-decoration: underline;
+   color: rgb(255, 255, 255);
+   background: #727272;
+   border: none;  
+}
+
+.login-register /* dont have account*/
+{
+    font-size: 1em;
+    color: rgb(155, 142, 142);
+    text-align: center;
+    font-weight: 500;
+    margin: 25px 0 10px; 
+}
+
+.login-register p a  /*register*/
+{
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    padding-left: 10px;
+}
+
+.login-register p a:hover
+{
+    text-decoration: underline;
+}
